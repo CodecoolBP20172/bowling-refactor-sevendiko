@@ -7,7 +7,7 @@ def score(game):
             result += 10 - last
         else:
             result += get_value(game[record])
-        if frame < 10 and get_value(game[record]) == 10:
+        if frame < 10:
             if game[record] == '/':
                 result += get_value(game[record+1])
             elif game[record] == 'X' or game[record] == 'x':
