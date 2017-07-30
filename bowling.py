@@ -3,20 +3,23 @@ def score(game):
     frame = 1
     in_first_half = True
     for record in range(len(game)):
+        def value(num):
+            val = get_value(game[record + num])
+            return val
         if game[record] == '/':
             result += 10 - last
         else:
-            result += get_value(game[record])
+            result += value(0)
         if frame < 10:
             if game[record] == '/':
-                result += get_value(game[record+1])
+                result += value(1)
             elif game[record] == 'X' or game[record] == 'x':
-                result += get_value(game[record+1])
+                result += value(1)
                 if game[record+2] == '/':
-                    result += 10 - get_value(game[record+1])
+                    result += 10 - value(1)
                 else:
-                    result += get_value(game[record+2])
-        last = get_value(game[record])
+                    result += value(2)
+        last = value(0)
         if not in_first_half:
             frame += 1
         if in_first_half:
